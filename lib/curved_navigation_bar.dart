@@ -10,6 +10,7 @@ class CurvedNavigationBar extends StatefulWidget {
   final int index;
   final Color color;
   final Color buttonBackgroundColor;
+  final Color buttonAccentColor;
   final Color backgroundColor;
   final ValueChanged<int> onTap;
   final _LetIndexPage letIndexChange;
@@ -22,8 +23,9 @@ class CurvedNavigationBar extends StatefulWidget {
     @required this.items,
     this.index = 0,
     this.color = Colors.white,
-    this.buttonBackgroundColor,
-    this.backgroundColor = Colors.blueAccent,
+    this.buttonBackgroundColor = Theme.of(context).primaryColor,
+    this.buttonAccentColor,
+    this.backgroundColor = Colors.transparent,
     this.onTap,
     _LetIndexPage letIndexChange,
     this.animationCurve = Curves.easeOut,
@@ -115,14 +117,18 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                   0,
                   -(1 - _buttonHide) * 80,
                 ),
-                child: Material(
-                  color: widget.buttonBackgroundColor ?? widget.color,
-                  type: MaterialType.circle,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _icon,
+                child: Container(
+                  padding: const EdgeInsets.all(9.0),
+                  decoration: BoxDecoration(
+                    // color: widget.buttonBackgroundColor ?? widget.color,
+                    shape: BoxShape.circle,
+                    boxShadow: [BoxShadow(color: Colors.black12, offset: Offset(2,2), blurRadius: 5, spreadRadius: 1)],
+                    gradient: LinearGradient(
+                      colors: [widget.buttonBackgroundColor, widget.buttonBackgroundColor, widget.buttonAccentColor ?? widget.buttonBackgroundColor],
+                      begin: Alignment.bottomLeft,
+                    )
                   ),
-                ),
+                  child: Center(child: _icon),
               ),
             ),
           ),
