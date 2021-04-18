@@ -23,7 +23,7 @@ class CurvedNavigationBar extends StatefulWidget {
     @required this.items,
     this.index = 0,
     this.color = Colors.white,
-    this.buttonBackgroundColor = Theme.of(context).primaryColor,
+    this.buttonBackgroundColor = Colors.blue,
     this.buttonAccentColor,
     this.backgroundColor = Colors.transparent,
     this.onTap,
@@ -129,6 +129,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                     )
                   ),
                   child: Center(child: _icon),
+                ),
               ),
             ),
           ),
